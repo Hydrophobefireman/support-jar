@@ -53,7 +53,7 @@ function Profile() {
     setMode(null);
     setUserList([]);
   }
-  const isSelf = current.id_ === resp?.user?.id_;
+  const isSelf = current?.id_ === resp?.user?.id_;
   return (
     <div>
       {isSelf && (
