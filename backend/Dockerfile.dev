@@ -18,4 +18,4 @@ COPY . .
 EXPOSE 5000
 
 # Set the command to run the app with Gunicorn
-CMD ["python3", "dev.py"]
+CMD ["python3","-u", "dev.py"]

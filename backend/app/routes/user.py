@@ -47,7 +47,7 @@ def login():
 
 
 @router.get("/-/token/refresh")
-@api.strict
+@api.none
 def refresh_token():
     context = Context()
     headers = context.headers
@@ -71,7 +71,7 @@ def refresh_token():
 
 
 @router.get("/<user>/")
-@api.lax
+@api.strict
 def user_details(user: str):
     req = Context()
     auth = req.auth

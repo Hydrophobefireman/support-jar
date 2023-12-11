@@ -51,7 +51,7 @@ def get_integrity(user_id: str, password_hash: str):
 def get_token(strict=True):
     headers = request.headers
     received_access_token = get_bearer_token(headers)
-
+    print(f"{received_access_token=}")
     if not received_access_token:
         if strict:
             raise AppException("No authentication provided")
@@ -85,5 +85,5 @@ def authenticate(user: str, password: str):
     username = user_data.user
     is_admin = user_data.is_admin
     access_token = create_token(issue_access_token(user_data.id_, username, is_admin))
-    refresh_token = create_token(issue_refresh_token(username, pw_hash))
+    refresh_token = create_token(issue_refresh_token(user_data.id_, pw_hash))
     return access_token, refresh_token, user_data

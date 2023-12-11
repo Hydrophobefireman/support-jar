@@ -10,7 +10,7 @@ GUNICORN_COMMANDS = (
         "localhost:5000",
     ],
 )
-FLASK_COMMANDS = (["python3", "runner.py", "coreserver"],)
+FLASK_COMMANDS = (["python3", "-u", "runner.py", "coreserver"],)
 
 
 def get_argv(argv, i):
@@ -18,6 +18,7 @@ def get_argv(argv, i):
         return argv[i]
     except:
         return None
+
 
 
 if __name__ == "__main__":

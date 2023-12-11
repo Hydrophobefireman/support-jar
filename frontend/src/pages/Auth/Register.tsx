@@ -3,7 +3,7 @@ import {css} from "catom";
 import {Form} from "@/components/Form";
 import {requests} from "@/util/bridge";
 import {routes} from "@/util/http";
-import {A, useState} from "@hydrophobefireman/ui-lib";
+import {A, redirect, useState} from "@hydrophobefireman/ui-lib";
 import {useAlerts} from "@kit/alerts";
 import {TextButton} from "@kit/button";
 import {Box} from "@kit/container";
@@ -21,7 +21,7 @@ export default function Login() {
     const {result} = requests.postJSON(routes.registerRoute, data);
     const resp = await result;
     if (resp.data) {
-      console.log(resp.data);
+      redirect("/app");
     } else if (resp.error) {
       show({
         content: `Could not log in due to the following error: ${resp.error}`,
@@ -33,7 +33,7 @@ export default function Login() {
     <Box>
       <Text.p>Create a SupportJar account!</Text.p>
       <Form onSubmit={handleSubmit} autocomplete="off">
-        <Box>
+        <Box class={css({marginTop: "1rem"})}>
           <Input
             value={name}
             setValue={setName}

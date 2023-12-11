@@ -4,6 +4,8 @@ from ._handler import State
 
 EXPOSE_HEADERS = ", ".join(("x-access-token", "x-refresh-token", "x-dynamic"))
 
+ALLOW_METHODS = ", ".join(("GET", "PUT", "POST", "PATCH", "DELETE"))
+
 
 def middleware(request: Request, state: State):
     origin = get_origin(request)
@@ -16,3 +18,4 @@ def middleware(request: Request, state: State):
     resp.headers["access-control-allow-credentials"] = "true"
     resp.headers["access-control-max-age"] = "86400"
     resp.headers["access-control-expose-headers"] = EXPOSE_HEADERS
+    resp.headers["access-control-allow-methods"] = ALLOW_METHODS

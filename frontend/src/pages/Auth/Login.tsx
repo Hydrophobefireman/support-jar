@@ -1,9 +1,9 @@
 import {css} from "catom";
 
 import {Form} from "@/components/Form";
-import {requests} from "@/util/bridge";
+import {client, requests} from "@/util/bridge";
 import {routes} from "@/util/http";
-import {A, useState} from "@hydrophobefireman/ui-lib";
+import {A, redirect, useState} from "@hydrophobefireman/ui-lib";
 import {useAlerts} from "@kit/alerts";
 import {TextButton} from "@kit/button";
 import {Box} from "@kit/container";
@@ -17,9 +17,11 @@ export default function Login() {
   async function handleSubmit(e: JSX.TargetedEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = {user, password: pass};
-    const {result} = requests.postJSON(routes.loginRoute, data);
+    const {result} = client.login(user, pass);
     const resp = await result;
-    if (resp.data) {
+    console.log(resp);
+    if ((resp as any).user_data) {
+      redirect("/app");
     } else if (resp.error) {
       show({
         content: `Could not log in due to the following error: ${resp.error}`,
