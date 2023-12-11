@@ -46,7 +46,7 @@ function Profile() {
     const isFollowers = action === "followers";
     fetchUserConnectionData(isFollowers);
   }
-  const canView = resp.is_subscribed || resp?.user?.id_ === current.id_;
+  const canView = resp.is_subscribed || resp?.user?.id_ === current?.id_;
   function close() {
     setLoading(false);
     setViewing(false);

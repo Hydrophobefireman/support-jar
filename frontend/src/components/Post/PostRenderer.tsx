@@ -72,7 +72,7 @@ export function PostRenderer({
           <div>Views: {post.views}</div>
         </div>
       </div>
-      {user?.id_ == post.user_id && (
+      {user?.id_ == post?.user_id && (
         <Box horizontal="right">
           <Button
             onClick={deletePost}
