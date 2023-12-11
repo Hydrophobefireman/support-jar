@@ -9,7 +9,7 @@ class Post(db.Model):
     # pylint: disable=E1101
     id_: str = db.Column(TEXT, unique=True, nullable=False, primary_key=True)
     title: str = db.Column(db.String(255), nullable=False)
-    user_id: str = db.Column(TEXT, db.ForeignKey("user.id_"), nullable=False)
+    user_id: str = db.Column(TEXT, db.ForeignKey("users.id_"), nullable=False)
     content: str = db.Column(TEXT, nullable=False)
     posted_at: int = db.Column(db.Integer, nullable=False)
     views: int = db.Column(db.Integer, default=0)
